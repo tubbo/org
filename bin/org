@@ -1,0 +1,7 @@
+#!/bin/zsh
+#
+# Org mode helpers for the shell
+
+ORG_PATH="$HOME/Dropbox/Apps/MobileOrg"
+
+eval "$ORG_PATH/bin/org-$1"

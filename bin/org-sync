@@ -1,0 +1,19 @@
+#!/bin/zsh
+#
+# "Sync" to MobileOrg by rebuilding the index and checksums data. This
+# pretty much only needs to be run when a file is created or removed.
+
+echo "$(shasum $ORG_PATH/**/*.org)" > $ORG_PATH/checksums.dat
+echo <<ORG
+#+READONLY
+#+TODO: TODO DONE
+#+TODO:  | DONE
+#+TAGS: 
+#+DRAWERS: PROPERTIES CLOCK LOGBOOK RESULTS
+#+ALLPRIORITIES: A B C
+ORG > $ORG_PATH/index.org
+
+for file in $(ls $ORG_PATH/**/*.org)
+do
+  echo "* [file:$file|$file]" >> $ORG_PATH/index.org
+done
