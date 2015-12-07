@@ -2,7 +2,7 @@
 # commands, and of course install the Homer scripts themselves to an
 # executable location.
 
-.PHONY: test install uninstall reinstall clean all
+.PHONY: test install uninstall reinstall all
 
 NAME=org
 SHELL=/usr/bin/env zsh
@@ -13,11 +13,7 @@ INSTALL_FILES=`find $(DIRS) -type f`
 PREFIX?=$(DESTDIR)/usr/local
 
 # Install this script to /usr/local
-all: clean install
-
-# Remove generated files
-clean:
-	rm -f ${PREFIX}/bin/org-*
+all: install
 
 # Move scripts to /usr/local
 install:
