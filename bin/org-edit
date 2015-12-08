@@ -2,4 +2,4 @@
 #
 # Begin editing your org-mode documents
 
-vim $ORG_PATH/index.org
+$EDITOR $ORG_PATH/index.org +cd "$ORG_PATH"

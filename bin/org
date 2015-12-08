@@ -2,6 +2,13 @@
 #
 # Org mode helpers for the shell
 
-ORG_PATH="$HOME/Dropbox/Apps/MobileOrg"
+if [[ -n "${ORG_PATH+x}" ]]
+then
+  # nothing
+else
+  export ORG_PATH="$HOME/Dropbox/Apps/MobileOrg"
+fi
 
-eval "$ORG_PATH/bin/org-$1"
+eval "$(dirname $0:A)/org-$1"
+
+exit 0
