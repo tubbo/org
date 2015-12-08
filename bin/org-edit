@@ -2,4 +2,6 @@
 #
 # Begin editing your org-mode documents
 
-$EDITOR $ORG_PATH/index.org +cd "$ORG_PATH"
+pushd $ORG_PATH
+$EDITOR **/*.org
+popd $ORG_PATH
