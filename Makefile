@@ -25,5 +25,5 @@ uninstall:
 	for file in $(INSTALL_FILES); do rm -f $(PREFIX)/$$file; done
 
 # Reinstall the scripts with Homebrew.
-reinstall:
-	brew update && brew reinstall ${NAME} --HEAD
+reinstall: uninstall install
+	# brew update && brew reinstall ${NAME} --HEAD
