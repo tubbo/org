@@ -1,18 +1,26 @@
-#!/bin/zsh
+#!/usr/bin/env ruby
 #
 # "Sync" to MobileOrg by rebuilding the index and checksums data. This
 # pretty much only needs to be run when a file is created or removed.
-echo "$(shasum $ORG_PATH/**/*.org)" > $ORG_PATH/checksums.dat
-echo <<ORG
-#+READONLY
+
+ORG_PATH = ENV['ORG_PATH']
+
+File.open "#{ORG_PATH}/index.org", 'w+' do |f|
+  f.puts %(#+READONLY
 #+TODO: TODO DONE
 #+TODO:  | DONE
-#+TAGS: 
+#+TAGS:
 #+DRAWERS: PROPERTIES CLOCK LOGBOOK RESULTS
 #+ALLPRIORITIES: A B C
-ORG > $ORG_PATH/index.org
+  )
+  Dir["#{ORG_PATH}/**/*.org"].reject do |path|
+    path =~ /(index|mobileorg)\.org/
+  end.each do |path|
+    base = File.basename path
+    name = base.gsub(/\.org/, '').capitalize
+    f.puts "[[file:#{base}|#{name}]]"
+  end
+end
 
-for file in $(ls $ORG_PATH/**/*.org)
-do
-  echo "* [file:$file|$file]" >> $ORG_PATH/index.org
-done
+# Write checksums file
+File.write "#{ORG_PATH}/checksums.dat", `shasum #{ORG_PATH}/**/*.org 2>/dev/null`
