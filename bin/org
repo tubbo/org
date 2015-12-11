@@ -9,6 +9,12 @@ else
   export ORG_PATH="$HOME/Dropbox/Apps/MobileOrg"
 fi
 
-eval "$(dirname $0:A)/org-$1"
+if [[ -f "$(dirname $0:A)/org-$1" ]]
+then
+  eval "$(dirname $0:A)/org-$1";
+  exit 0
+else
+  echo "Command '$1' not found";
+  exit 1
+fi
 
-exit 0
