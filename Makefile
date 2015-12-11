@@ -29,4 +29,4 @@ reinstall: uninstall install
 	# brew update && brew reinstall ${NAME} --HEAD
 
 command:
-	cp etc/template.zsh bin/org-${NAME}
+	cp etc/command.zsh bin/org-${NAME}
