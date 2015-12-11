@@ -2,13 +2,12 @@
 #
 # Provide a directory of commands
 
-echo <<TXT
-org v0.0.1 - the command-line org-mode helper
+echo "org v0.0.1 - the command-line org-mode helper
 
 Usage: org COMMAND [ARGUMENTS]
 
 help - Show this page
-init - Create an index.org and checksums.dat file in the $ORG_PATH
+init - Create an index.org and checksums.dat file in the \$ORG_PATH ($ORG_PATH)
 add FILE - Add a new file to the index
 commit - Create sha1 checksums for all files in checksums.dat
-TXT
+";
