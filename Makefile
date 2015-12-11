@@ -24,6 +24,7 @@ clean:
 
 command:
 	cp etc/command.zsh bin/org-${NAME}
+	@chmod 755 bin/org-${NAME}
 
 update:
 	brew reinstall org --HEAD
