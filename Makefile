@@ -2,8 +2,6 @@
 # commands, and of course install the Homer scripts themselves to an
 # executable location.
 
-.PHONY: test install uninstall reinstall all
-
 NAME=org
 SHELL=/usr/bin/env zsh
 DIRS=bin
@@ -13,7 +11,7 @@ INSTALL_FILES=`find $(DIRS) -type f`
 PREFIX?=$(DESTDIR)/usr/local
 
 # Install this script to /usr/local
-all: install
+all: clean install
 
 # Move scripts to /usr/local
 install:
@@ -21,12 +19,10 @@ install:
 	for file in $(INSTALL_FILES); do cp $$file $(PREFIX)/$$file; done
 
 # Remove scripts from /usr/local
-uninstall:
+clean:
 	for file in $(INSTALL_FILES); do rm -f $(PREFIX)/$$file; done
-
-# Reinstall the scripts with Homebrew.
-reinstall: uninstall install
-	# brew update && brew reinstall ${NAME} --HEAD
 
 command:
 	cp etc/command.zsh bin/org-${NAME}
+
+.PHONY: all install clean command
