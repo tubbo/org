@@ -25,4 +25,7 @@ clean:
 command:
 	cp etc/command.zsh bin/org-${NAME}
 
-.PHONY: all install clean command
+update:
+	brew reinstall org --HEAD
+
+.PHONY: all install clean command update
