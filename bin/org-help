@@ -12,4 +12,5 @@ init - Create an index.org and checksums.dat file in the \$ORG_PATH ($ORG_PATH)
 add FILE - Add a new file to the index
 commit - Create sha1 checksums for all files in checksums.dat
 edit - Edit all .org files in your \$EDITOR ($EDITOR)
+show - Change working directory and edit all .org files in your \$EDITOR ($EDITOR)
 ";

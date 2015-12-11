@@ -1,0 +1,6 @@
+#!/bin/zsh
+#
+# cd to the $ORG_PATH and run org-edit
+
+cd $ORG_PATH
+org edit
