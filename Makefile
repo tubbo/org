@@ -27,3 +27,6 @@ uninstall:
 # Reinstall the scripts with Homebrew.
 reinstall: uninstall install
 	# brew update && brew reinstall ${NAME} --HEAD
+
+command:
+	cp etc/template.zsh bin/org-${NAME}

@@ -1,0 +1,6 @@
+#!/bin/zsh
+#
+# Initialize MobileOrg in your Dropbox for the first time
+
+cp /usr/local/etc/org/index.org $ORG_PATH/index.org
+org commit

@@ -1,0 +1,5 @@
+#!/bin/zsh
+#
+# Add a new file to the index
+
+echo "* [[file:$filename|$title]]" >> index.org

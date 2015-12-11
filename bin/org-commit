@@ -1,0 +1,5 @@
+#!/bin/zsh
+#
+# Update the checksums.dat file
+
+echo $(shasum $ORG_PATH/**/*.org) > $ORG_PATH/checksums.dat
