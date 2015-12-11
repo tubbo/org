@@ -2,15 +2,7 @@
 #
 # Add a new file to the index
 
-zparseopts -K -- t:=title
+local -a filename message
+zparseopts -K -- f:=filename m:=message
 
-local filename=$1
-
-if [[ -z $title ]]
-then
-  local title="$(echo $filename | sed 's/\.org//')"
-fi
-
-echo "* [[file:$filename|$title]]" >> index.org
-
-org commit
+echo "* [[file:$filename|$message]]" >> index.org
