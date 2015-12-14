@@ -7,6 +7,10 @@ Emacs. Built due to lack of support for
 will run `shasum` on your **.org** files and rebuild the **index.org**
 file.
 
+**org** was written in [ZSH](http://www.zsh.org) shell script, so you will
+need ZSH installed (but you don't have to run it as your primary shell)
+in order to use this program.
+
 ## Installation
 
 Install from Homebrew:
