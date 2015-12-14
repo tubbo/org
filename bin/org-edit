@@ -1,7 +1,0 @@
-#!/bin/zsh
-#
-# Begin editing your org-mode documents
-
-pushd $ORG_PATH
-$EDITOR **/*.org
-popd $ORG_PATH

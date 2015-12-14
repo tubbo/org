@@ -3,5 +3,6 @@
 # Initialize MobileOrg in your Dropbox for the first time
 
 mkdir -p $ORG_PATH
-cp /usr/local/etc/org/index.org $ORG_PATH/index.org
+echo $ORG_PATH
+cp etc/index.org $ORG_PATH/index.org
 org commit

@@ -25,10 +25,21 @@ clean:
 # Generate a new org-command from the template
 command:
 	cp etc/command.zsh bin/org-${NAME}
+	cp etc/test.zsh test/${NAME}-test.bats
 	@chmod 755 bin/org-${NAME}
 
 # Reinstall org from its Homebrew formula
 update:
 	brew reinstall org --HEAD
 
-.PHONY: all install clean command update
+# Run tests with BATS
+test: /usr/local/bin/bats
+	@rm -rf tmp
+	@mkdir -p tmp
+	ORG_PATH=tmp bats test
+
+# Install BATS
+/usr/local/bin/bats:
+	brew install bats
+
+.PHONY: all install clean command update test
