@@ -22,10 +22,12 @@ install:
 clean:
 	for file in $(INSTALL_FILES); do rm -f $(PREFIX)/$$file; done
 
+# Generate a new org-command from the template
 command:
 	cp etc/command.zsh bin/org-${NAME}
 	@chmod 755 bin/org-${NAME}
 
+# Reinstall org from its Homebrew formula
 update:
 	brew reinstall org --HEAD
 
