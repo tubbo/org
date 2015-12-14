@@ -24,13 +24,22 @@ shell.
 
 ## Usage
 
-To update your MobileOrg account:
+Create the path for `.org` files and the initial `index.org` template:
 
-    $ org sync
+    $ org init
 
-To begin editing your org-mode files:
+Add a new file to the `index.org`. This will automatically write
+`checksums.dat` as well:
 
-    $ org edit
+    $ org add file.org -t "File"
+    
+Write the `checksums.dat` files:
+
+    $ org commit
+
+Edit an `.org` file, or pass no arguments to edit them all:
+
+    $ org show file.org
 
 ## Development
 
