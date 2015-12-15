@@ -10,6 +10,6 @@ then
   local title=$(echo $filename | sed 's/\.org//g')
 fi
 
-echo "* [[file:$filename|$title]]" >> $ORG_PATH/index.org
+echo "* [[file:$filename][$title]]" >> $ORG_PATH/index.org
 
 org commit
