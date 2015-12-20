@@ -1,5 +1,14 @@
 install:
-  - sudo add-apt-repository ppa:duggan/bats --yes
-  - sudo apt-get update -qq
-  - sudo apt-get install -qq bats zsh
+- sudo add-apt-repository ppa:duggan/bats --yes
+- sudo apt-get update -qq
+- sudo apt-get install -qq bats zsh
 script: make test
+before_deploy: make pkg
+deploy:
+  provider: releases
+  api_key:
+    secure: VCUy/F1tyy08dxJttt7yGrxAWFpoNAayFh/C+Hf6prn9IjYDmE44UnARZYWfo8QFowIpMO5t5a9TWu9BO0g8zxnpaq2fqqMsrd//bjAbVJaaqtrVYN/mFSkTWCbWhgsyusFCzFQM03kqm4CyG8Qx+hdkOKXakSRaTkNZ/+9OEjAMwXhXUaznMUqT/4u3l/44J5Farcgedy6Q9FsF9K3i7lZfECNzU/1MZ7vHKCufh8jCY5Ai5Kaeuvu+V/BbFEcQNcqwdL2udnr53L6TVV3Tl1RcoRg1+84PX07J+m7Gcx62aa1NvQbFNxneE5C9+ORhwrEX0pWIQj/AwZaK58KCUIpmQXHv/qAot//GtAHd2Togdmbdqd4hdMxMfUcXYHwl6wegKeh8VNOShjwamFqgMzgnGO/gie7juyBBBzVYAQAdetgymvQABejjNVhB7S8mi5DiT7NoFahyO8R418mi6GJzAQMVFz5CRddEvQe4KZiWS7rp94UaSXY6q3xAzsnu9p6VtcVWSoE2dkHCVuK23xKP2/iwtC222RbuJK89bW1h4ldLJ4u9UO5I408b/aYO4+N0dfa7GHeSlxZe3e7aebUemHczsV3WX1J6O5rCO5lmtwbE2N6omhxMR7wAE+1s1MC4suXFrnBTqZpYJJmvGEtz7G3NtpzxH36wSjfSoMY=
+  file: pkg/org.tar.gz
+  on:
+    repo: tubbo/org
+    tags: true

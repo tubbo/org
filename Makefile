@@ -54,4 +54,9 @@ release:
 	@git push
 	@echo "Visit https://travis-ci.org/tubbo/org for progress updates."
 
+# Create a tarball archive of the current directory.
+pkg:
+	@mkdir -p pkg
+	@tar -czf pkg/org.tar.gz .
+
 .PHONY: all install clean command update test release
