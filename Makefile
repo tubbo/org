@@ -1,17 +1,12 @@
-# Build scripts for Homer. These tasks will generate documentation,
-# commands, and of course install the Homer scripts themselves to an
-# executable location.
-
 NAME=org
 SHELL=/usr/bin/env zsh
 DIRS=bin
 INSTALL_DIRS=`find $(DIRS) -type d`
 INSTALL_FILES=`find $(DIRS) -type f`
 VERSION=0.0.2
-
 PREFIX?=$(DESTDIR)/usr/local
 
-# Install this script to /usr/local
+# Clear out initial installation and tempfiles and install
 all: clean install
 
 # Move scripts to /usr/local and overwrite version file.
@@ -21,27 +16,26 @@ install:
 	@echo 'echo "v${VERSION}";' >> $(PREFIX)/org-version
 	@chmod 755 $(PREFIX)/org-version
 
-
-# Remove scripts from /usr/local
+# Remove scripts from /usr/local.
 clean:
 	@for file in $(INSTALL_FILES); do rm -f $(PREFIX)/$$file; done
 	@rm -r tmp
 
-# Generate a new org-command from the template
+# Generate a new org-command from the template.
 command:
 	cp etc/command.zsh bin/org-${NAME}
 	cp etc/test.bats test/${NAME}_test.bats
 	@chmod 755 bin/org-${NAME}
 
-# Reinstall org from its Homebrew formula
+# Reinstall using the Homebrew formula.
 update:
 	@brew reinstall org --HEAD
 
-# Run tests with BATS
+# Run tests with BATS.
 test: clean tmp
 	@ORG_PATH=tmp bats test
 
-# Create a folder to house temporary files
+# Create a folder to house temporary files.
 tmp:
 	@mkdir -p tmp
 
@@ -53,7 +47,9 @@ release:
 	@git push
 	@echo "Visit https://travis-ci.org/tubbo/org for progress updates."
 
-# Create a tarball archive of the current directory.
+# Create a tarball archive of the current directory. Typically used
+# within the Travis build, it can also be invoked by any user with the
+# source code.
 archive: tmp
 	@git archive v${VERSION} --output=tmp/org.tar.gz --prefix=org-${VERSION}/
 
