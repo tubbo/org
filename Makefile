@@ -25,7 +25,7 @@ install:
 # Remove scripts from /usr/local
 clean:
 	@for file in $(INSTALL_FILES); do rm -f $(PREFIX)/$$file; done
-	@rm -r pkg tmp
+	@rm -r tmp
 
 # Generate a new org-command from the template
 command:
@@ -38,10 +38,12 @@ update:
 	@brew reinstall org --HEAD
 
 # Run tests with BATS
-test:
-	@rm -rf tmp
-	@mkdir -p tmp
+test: clean tmp
 	@ORG_PATH=tmp bats test
+
+# Create a folder to house temporary files
+tmp:
+	@mkdir -p tmp
 
 # Create a Git tag of the latest version and push to GitHub so it can be
 # evaluated using Travis CI and deployed as a GitHub release.
@@ -52,8 +54,7 @@ release:
 	@echo "Visit https://travis-ci.org/tubbo/org for progress updates."
 
 # Create a tarball archive of the current directory.
-pkg:
-	@mkdir -p pkg
-	@git archive v${VERSION} --output=pkg/org.tar.gz --prefix=org-${VERSION}/
+archive: tmp
+	@git archive v${VERSION} --output=tmp/org.tar.gz --prefix=org-${VERSION}/
 
-.PHONY: all install clean command update test release
+.PHONY: all install clean command update test release archive
