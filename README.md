@@ -1,5 +1,7 @@
 # org
 
+[![Build Status](https://travis-ci.org/tubbo/org.svg)](https://travis-ci.org/tubbo/org)
+
 A set of shellscript helpers to aid you when using org-mode and not in
 Emacs. Built due to lack of support for
 [MobileOrg](http://mobileorg.ncogni.to/) in
