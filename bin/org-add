@@ -1,13 +1,15 @@
 #!/bin/zsh
 #
-# Add a new file to the index
+# Add a new file to the index with an optional title. If one is not
+# provided, the filename is used and capitalized.
 
-local filename=$2
-local title=$3
+local filename=$2;
+local title=$3;
 
 if [ -z "$title" ]
 then
-  local title=$(echo $filename | sed 's/\.org//g')
+  declare -c title
+  title=$(echo $filename | sed 's/\.org//g')
 fi
 
 echo "* [[file:$filename][$title]]" >> $ORG_PATH/index.org

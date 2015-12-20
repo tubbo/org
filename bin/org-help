@@ -1,16 +1,18 @@
 #!/bin/zsh
 #
-# Provide a directory of commands
+# Provide a directory of commands that `org` responds to.
+
+local version=$(org version)
 
 echo "
-org v0.0.1 - the command-line org-mode helper
+org $version - the command-line org-mode helper
 
 Usage: org COMMAND [ARGUMENTS]
 
-help - Show this page
-init - Create an index.org and checksums.dat file in the \$ORG_PATH ($ORG_PATH)
-add FILE - Add a new file to the index
-commit - Create sha1 checksums for all files in checksums.dat
-edit - Edit all .org files in your \$EDITOR ($EDITOR)
-show - Change working directory and edit all .org files in your \$EDITOR ($EDITOR)
+help             - Show this page
+init             - Create an index.org and checksums.dat file in the \$ORG_PATH ($ORG_PATH)
+add FILE [TITLE] - Add a new file to the index and commit it to checksums.dat
+commit           - Create sha1 checksums for all files in checksums.dat
+show             - Edit all .org files in your \$EDITOR ($EDITOR)
+version          - Show the latest Org version ($version)
 ";

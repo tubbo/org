@@ -2,19 +2,18 @@
 #
 # Org mode helpers for the shell
 
-if [[ -n "${ORG_PATH+x}" ]]
+if [[ -z $ORG_PATH ]]
 then
-  # nothing
-else
-  export ORG_PATH="$HOME/Dropbox/Apps/MobileOrg"
+  export ORG_PATH="$HOME/Dropbox/Apps/MobileOrg";
 fi
+export ORG_SCRIPT_PATH=$(dirname $0:A);
 
-if [[ -f "$(dirname $0:A)/org-$1" ]]
+if [[ -f "$ORG_SCRIPT_PATH/org-$1" ]]
 then
-  source "$(dirname $0:A)/org-$1";
+  source "$ORG_SCRIPT_PATH/org-$1";
   exit 0
 else
   echo "Command '$1' not found";
+  source "$ORG_SCRIPT_PATH/org-help";
   exit 1
 fi
-
