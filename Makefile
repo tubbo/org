@@ -53,6 +53,6 @@ release:
 # Create a tarball archive of the current directory.
 pkg:
 	@mkdir -p pkg
-	@git archive ${VERSION} > pkg/org.tar.gz
+	@git archive v${VERSION} --output=pkg/org.tar.gz --prefix=org-${VERSION}/
 
 .PHONY: all install clean command update test release
