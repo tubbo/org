@@ -14,10 +14,6 @@ PREFIX?=$(DESTDIR)/usr/local
 # Install this script to /usr/local
 all: clean install
 
-# Install BATS
-/usr/local/bin/bats:
-	@brew install bats
-
 # Move scripts to /usr/local and overwrite version file.
 install:
 	@for dir in $(INSTALL_DIRS); do mkdir -p $(PREFIX)/$$dir; done
@@ -41,7 +37,7 @@ update:
 	@brew reinstall org --HEAD
 
 # Run tests with BATS
-test: /usr/local/bin/bats
+test:
 	@rm -rf tmp
 	@mkdir -p tmp
 	@ORG_PATH=tmp bats test
