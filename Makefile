@@ -19,7 +19,7 @@ install:
 # Remove scripts from /usr/local.
 clean:
 	@for file in $(INSTALL_FILES); do rm -f $(PREFIX)/$$file; done
-	@rm -r tmp
+	@rm -rf tmp
 
 # Generate a new org-command from the template.
 command:
