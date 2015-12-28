@@ -2,6 +2,4 @@
 #
 # Begin editing your org-mode documents
 
-pushd $ORG_PATH
-$EDITOR **/*.org
-popd $ORG_PATH
+$EDITOR $ORG_PATH/agendas.org +cd $ORG_PATH
